@@ -68,6 +68,25 @@ export default function App() {
       }).start();
     });
   };
+
+  const heightWidthPercent = useRef(new Animated.Value(0)).current;
+  const heightWidthPercentInterpolate = heightWidthPercent.interpolate({
+    inputRange: [0, 1],
+    outputRange: ["20%", "50%"],
+  });
+  const startHeightWidthPercentAnimation = () => {
+    Animated.timing(heightWidthPercent, {
+      toValue: 1,
+      duration: 3000,
+      useNativeDriver: false,
+    }).start(() => {
+      Animated.timing(heightWidthPercent, {
+        toValue: 0,
+        duration: 3000,
+        useNativeDriver: false,
+      }).start();
+    });
+  };
   const absolutePosition = useRef(new Animated.Value(0)).current;
   const startAbsolutePositionAnimation = () => {
     Animated.timing(absolutePosition, {
@@ -210,6 +229,20 @@ export default function App() {
             <Text style={{ color: "black" }}>{"HEIGHT & WIDTH"}</Text>
           </Animated.View>
         </TouchableWithoutFeedback>
+        {/* <TouchableWithoutFeedback onPressIn={startHeightWidthPercentAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "teal",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              height: heightWidthPercentInterpolate,
+              // width: heightWidthPercentInterpolate,
+            }}
+          >
+            <Text style={{ color: "white" }}>{"HEIGHT & WIDTH %"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback> */}
         <TouchableWithoutFeedback onPressIn={startAbsolutePositionAnimation}>
           <Animated.View
             style={{
