@@ -53,6 +53,20 @@ export default function App() {
       }).start();
     });
   };
+  const heightWidth = useRef(new Animated.Value(100)).current;
+  const startHeightWidthAnimation = () => {
+    Animated.timing(heightWidth, {
+      toValue: 20,
+      duration: 3000,
+      useNativeDriver: false,
+    }).start(() => {
+      Animated.timing(heightWidth, {
+        toValue: 100,
+        duration: 3000,
+        useNativeDriver: false,
+      }).start();
+    });
+  };
   return (
     <View style={styles.container}>
       <Text>Animations</Text>
@@ -110,7 +124,7 @@ export default function App() {
           <Text style={{ color: "black" }}>{"TRANSLATE POSITION > < "}</Text>
         </Animated.View>
       </TouchableWithoutFeedback> */}
-      <TouchableWithoutFeedback onPressIn={startScaleAnimation}>
+      {/* <TouchableWithoutFeedback onPressIn={startScaleAnimation}>
         <Animated.View
           style={{
             backgroundColor: "red",
@@ -127,6 +141,20 @@ export default function App() {
           }}
         >
           <Text style={{ color: "black" }}>{"SCALE"}</Text>
+        </Animated.View>
+      </TouchableWithoutFeedback> */}
+      <TouchableWithoutFeedback onPressIn={startHeightWidthAnimation}>
+        <Animated.View
+          style={{
+            backgroundColor: "orange",
+            flexDirection: "row",
+            height: heightWidth,
+            width: heightWidth,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text style={{ color: "black" }}>{"HEIGHT & WIDTH"}</Text>
         </Animated.View>
       </TouchableWithoutFeedback>
     </View>
