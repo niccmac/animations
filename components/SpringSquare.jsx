@@ -2,24 +2,24 @@ import { useRef } from "react";
 import { Animated, Easing, Text, TouchableWithoutFeedback } from "react-native";
 
 export const SpringSquare = () => {
-  const absolutePosition = useRef(new Animated.Value(0)).current;
-  const startAbsolutePositionAnimation = () => {
-    Animated.timing(absolutePosition, {
-      toValue: 150,
-      duration: 500,
-
-      useNativeDriver: false,
+  const spring = useRef(new Animated.Value(1)).current;
+  const startSpringAnimation = () => {
+    Animated.spring(spring, {
+      toValue: 2,
+      friction: 2,
+      tension: 160,
+      useNativeDriver: true,
     }).start(() => {
-      Animated.timing(absolutePosition, {
-        toValue: 0,
-        duration: 3000,
-
-        useNativeDriver: false,
+      Animated.spring(spring, {
+        toValue: 1,
+        friction: 2,
+        tension: 160,
+        useNativeDriver: true,
       }).start();
     });
   };
   return (
-    <TouchableWithoutFeedback onPressIn={startAbsolutePositionAnimation}>
+    <TouchableWithoutFeedback onPressIn={startSpringAnimation}>
       <Animated.View
         style={{
           backgroundColor: "olivedrab",
@@ -28,11 +28,10 @@ export const SpringSquare = () => {
           width: 100,
           justifyContent: "center",
           alignItems: "center",
-          top: absolutePosition,
-          left: absolutePosition,
+          transform: [{ scale: spring }],
         }}
       >
-        <Text style={{ color: "white" }}>{"ABSOLUTE POSITION"}</Text>
+        <Text style={{ color: "white" }}>{"SPRING"}</Text>
       </Animated.View>
     </TouchableWithoutFeedback>
   );
