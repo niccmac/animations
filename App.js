@@ -10,6 +10,7 @@ import {
   ColourSquare,
   RotateSquares,
   SpringSquare,
+  LoopSquare,
 } from "./components";
 
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
         <ColourSquare />
         <RotateSquares />
         <SpringSquare />
+        <LoopSquare />
       </View>
     </ScrollView>
   );

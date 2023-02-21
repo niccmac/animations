@@ -10,10 +10,10 @@ export const SpringSquare = () => {
       tension: 160,
       useNativeDriver: true,
     }).start(() => {
-      Animated.spring(spring, {
+      Animated.timing(spring, {
         toValue: 1,
-        friction: 2,
-        tension: 160,
+        duration: 100,
+        easing: Easing.bounce,
         useNativeDriver: true,
       }).start();
     });

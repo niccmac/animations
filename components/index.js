@@ -6,3 +6,4 @@ export * from "./AbsolutePosition";
 export * from "./Colour";
 export * from "./RotateSquares";
 export * from "./SpringSquare";
+export * from "./LoopSquare";
