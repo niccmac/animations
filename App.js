@@ -39,6 +39,20 @@ export default function App() {
       }).start();
     });
   };
+  const scale = useRef(new Animated.Value(1)).current;
+  const startScaleAnimation = () => {
+    Animated.timing(scale, {
+      toValue: 2, //Use negitive numbers to lift animation, positive to drop.
+      duration: 3000,
+      useNativeDriver: true,
+    }).start(() => {
+      Animated.timing(scale, {
+        toValue: 1,
+        duration: 3000,
+        useNativeDriver: true,
+      }).start();
+    });
+  };
   return (
     <View style={styles.container}>
       <Text>Animations</Text>
@@ -58,7 +72,7 @@ export default function App() {
           <Text style={{ color: "white" }}>FADE</Text>
         </Animated.View>
       </TouchableWithoutFeedback> */}
-      <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
+      {/* <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
         <Animated.View
           style={{
             backgroundColor: "pink",
@@ -94,6 +108,25 @@ export default function App() {
           }}
         >
           <Text style={{ color: "black" }}>{"TRANSLATE POSITION > < "}</Text>
+        </Animated.View>
+      </TouchableWithoutFeedback> */}
+      <TouchableWithoutFeedback onPressIn={startScaleAnimation}>
+        <Animated.View
+          style={{
+            backgroundColor: "red",
+            flexDirection: "row",
+            height: 100,
+            width: 100,
+            justifyContent: "center",
+            alignItems: "center",
+            transform: [
+              {
+                scale: scale, //Use translateX to move left > right
+              },
+            ],
+          }}
+        >
+          <Text style={{ color: "black" }}>{"SCALE"}</Text>
         </Animated.View>
       </TouchableWithoutFeedback>
     </View>
