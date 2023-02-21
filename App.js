@@ -6,6 +6,7 @@ import {
   View,
   Animated,
   Easing,
+  ScrollView,
 } from "react-native";
 import React, { useRef, useEffect, FC } from "react";
 
@@ -100,127 +101,193 @@ export default function App() {
       }).start();
     });
   };
+  const rotate = useRef(new Animated.Value(0)).current;
+  const rotateInterpolate = rotate.interpolate({
+    inputRange: [0, 360],
+    outputRange: ["0deg", "360deg"],
+  });
+  const startRotateAnimation = () => {
+    Animated.timing(rotate, {
+      toValue: 360,
+      duration: 3000,
+      useNativeDriver: false,
+    }).start(() => {
+      Animated.timing(rotate, {
+        toValue: 0,
+        duration: 1500,
+        useNativeDriver: false,
+      }).start();
+    });
+  };
   return (
-    <View style={styles.container}>
-      <Text>Animations</Text>
-      <StatusBar style="auto" />
-      <TouchableWithoutFeedback onPressIn={startFadeAnimation}>
-        <Animated.View
-          style={{
-            backgroundColor: "blue",
-            flexDirection: "row",
-            height: 100,
-            width: 100,
-            opacity: fade,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white" }}>FADE</Text>
-        </Animated.View>
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
-        <Animated.View
-          style={{
-            backgroundColor: "pink",
-            flexDirection: "row",
-            height: 100,
-            width: 100,
-            justifyContent: "center",
-            alignItems: "center",
-            transform: [
-              {
-                translateY: translatePosition, //Use translateX to move left > right
-              },
-            ],
-          }}
-        >
-          <Text style={{ color: "white" }}>TRANSLATE POSITION ˅ ^</Text>
-        </Animated.View>
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
-        <Animated.View
-          style={{
-            backgroundColor: "yellow",
-            flexDirection: "row",
-            height: 100,
-            width: 100,
-            justifyContent: "center",
-            alignItems: "center",
-            transform: [
-              {
-                translateX: translatePosition, //Use translateX to move left > right
-              },
-            ],
-          }}
-        >
-          <Text style={{ color: "black" }}>{"TRANSLATE POSITION > < "}</Text>
-        </Animated.View>
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPressIn={startScaleAnimation}>
-        <Animated.View
-          style={{
-            backgroundColor: "red",
-            flexDirection: "row",
-            height: 100,
-            width: 100,
-            justifyContent: "center",
-            alignItems: "center",
-            transform: [
-              {
-                scale: scale, //Use translateX to move left > right
-              },
-            ],
-          }}
-        >
-          <Text style={{ color: "black" }}>{"SCALE"}</Text>
-        </Animated.View>
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPressIn={startHeightWidthAnimation}>
-        <Animated.View
-          style={{
-            backgroundColor: "orange",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            height: heightWidth,
-            width: heightWidth,
-          }}
-        >
-          <Text style={{ color: "black" }}>{"HEIGHT & WIDTH"}</Text>
-        </Animated.View>
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPressIn={startAbsolutePositionAnimation}>
-        <Animated.View
-          style={{
-            backgroundColor: "purple",
-            flexDirection: "row",
-            height: 100,
-            width: 100,
-            justifyContent: "center",
-            alignItems: "center",
-            top: absolutePosition,
-            left: absolutePosition,
-          }}
-        >
-          <Text style={{ color: "white" }}>{"ABSOLUTE POSITION"}</Text>
-        </Animated.View>
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPressIn={startColourAnimation}>
-        <Animated.View
-          style={{
-            backgroundColor: boxInterpolation,
-            flexDirection: "row",
-            height: 100,
-            width: 100,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text style={{ color: "white" }}>{"COLOUR INTERPOLATION"}</Text>
-        </Animated.View>
-      </TouchableWithoutFeedback>
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>Animations</Text>
+        <StatusBar style="auto" />
+        <TouchableWithoutFeedback onPressIn={startFadeAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "blue",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              opacity: fade,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ color: "white" }}>FADE</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "pink",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              transform: [
+                {
+                  translateY: translatePosition, //Use translateX to move left > right
+                },
+              ],
+            }}
+          >
+            <Text style={{ color: "white" }}>TRANSLATE POSITION ˅ ^</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "yellow",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              transform: [
+                {
+                  translateX: translatePosition, //Use translateX to move left > right
+                },
+              ],
+            }}
+          >
+            <Text style={{ color: "black" }}>{"TRANSLATE POSITION > < "}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startScaleAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "red",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              transform: [
+                {
+                  scale: scale, //Use translateX to move left > right
+                },
+              ],
+            }}
+          >
+            <Text style={{ color: "black" }}>{"SCALE"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startHeightWidthAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "orange",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              height: heightWidth,
+              width: heightWidth,
+            }}
+          >
+            <Text style={{ color: "black" }}>{"HEIGHT & WIDTH"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startAbsolutePositionAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "purple",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              top: absolutePosition,
+              left: absolutePosition,
+            }}
+          >
+            <Text style={{ color: "white" }}>{"ABSOLUTE POSITION"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startColourAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: boxInterpolation,
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Text style={{ color: "white" }}>{"COLOUR INTERPOLATION"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startRotateAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "fuchsia",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              transform: [{ rotate: rotateInterpolate }],
+            }}
+          >
+            <Text style={{ color: "black" }}>{"ROTATE"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+
+        <TouchableWithoutFeedback onPressIn={startRotateAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "lightsalmon",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              transform: [{ rotateX: rotateInterpolate }],
+            }}
+          >
+            <Text style={{ color: "black" }}>{"ROTATE X"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPressIn={startRotateAnimation}>
+          <Animated.View
+            style={{
+              backgroundColor: "saddlebrown",
+              flexDirection: "row",
+              height: 100,
+              width: 100,
+              justifyContent: "center",
+              alignItems: "center",
+              transform: [{ rotateY: rotateInterpolate }],
+            }}
+          >
+            <Text style={{ color: "black" }}>{"ROTATE Y"}</Text>
+          </Animated.View>
+        </TouchableWithoutFeedback>
+      </View>
+    </ScrollView>
   );
 }
 
