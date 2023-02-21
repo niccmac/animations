@@ -74,7 +74,26 @@ export default function App() {
             ],
           }}
         >
-          <Text style={{ color: "white" }}>TRANSLATE POSITION</Text>
+          <Text style={{ color: "white" }}>TRANSLATE POSITION ˅ ^</Text>
+        </Animated.View>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
+        <Animated.View
+          style={{
+            backgroundColor: "yellow",
+            flexDirection: "row",
+            height: 100,
+            width: 100,
+            justifyContent: "center",
+            alignItems: "center",
+            transform: [
+              {
+                translateX: translatePosition, //Use translateX to move left > right
+              },
+            ],
+          }}
+        >
+          <Text style={{ color: "black" }}>{"TRANSLATE POSITION > < "}</Text>
         </Animated.View>
       </TouchableWithoutFeedback>
     </View>
