@@ -1,16 +1,18 @@
 import { useRef } from "react";
-import { Animated, Text, TouchableWithoutFeedback } from "react-native";
+import { Animated, Easing, Text, TouchableWithoutFeedback } from "react-native";
 export const Scale = () => {
   const scale = useRef(new Animated.Value(1)).current;
   const startScaleAnimation = () => {
     Animated.timing(scale, {
       toValue: 2, //Use negitive numbers to lift animation, positive to drop.
       duration: 3000,
+      easing: Easing.bounce,
       useNativeDriver: true,
     }).start(() => {
       Animated.timing(scale, {
         toValue: 1,
         duration: 3000,
+        easing: Easing.bounce,
         useNativeDriver: true,
       }).start();
     });
