@@ -85,7 +85,7 @@ export default function App() {
     <View style={styles.container}>
       <Text>Animations</Text>
       <StatusBar style="auto" />
-      {/* <TouchableWithoutFeedback onPressIn={startFadeAnimation}>
+      <TouchableWithoutFeedback onPressIn={startFadeAnimation}>
         <Animated.View
           style={{
             backgroundColor: "blue",
@@ -99,8 +99,8 @@ export default function App() {
         >
           <Text style={{ color: "white" }}>FADE</Text>
         </Animated.View>
-      </TouchableWithoutFeedback> */}
-      {/* <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPressIn={startTranslatePositionAnimation}>
         <Animated.View
           style={{
             backgroundColor: "pink",
@@ -137,8 +137,8 @@ export default function App() {
         >
           <Text style={{ color: "black" }}>{"TRANSLATE POSITION > < "}</Text>
         </Animated.View>
-      </TouchableWithoutFeedback> */}
-      {/* <TouchableWithoutFeedback onPressIn={startScaleAnimation}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPressIn={startScaleAnimation}>
         <Animated.View
           style={{
             backgroundColor: "red",
@@ -156,8 +156,8 @@ export default function App() {
         >
           <Text style={{ color: "black" }}>{"SCALE"}</Text>
         </Animated.View>
-      </TouchableWithoutFeedback> */}
-      {/* <TouchableWithoutFeedback onPressIn={startHeightWidthAnimation}>
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPressIn={startHeightWidthAnimation}>
         <Animated.View
           style={{
             backgroundColor: "orange",
@@ -170,7 +170,7 @@ export default function App() {
         >
           <Text style={{ color: "black" }}>{"HEIGHT & WIDTH"}</Text>
         </Animated.View>
-      </TouchableWithoutFeedback> */}
+      </TouchableWithoutFeedback>
       <TouchableWithoutFeedback onPressIn={startAbsolutePositionAnimation}>
         <Animated.View
           style={{
@@ -178,7 +178,8 @@ export default function App() {
             flexDirection: "row",
             height: 100,
             width: 100,
-            // position: "absolute",
+            justifyContent: "center",
+            alignItems: "center",
             top: absolutePosition,
             left: absolutePosition,
           }}
