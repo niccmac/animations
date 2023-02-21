@@ -67,6 +67,20 @@ export default function App() {
       }).start();
     });
   };
+  const absolutePosition = useRef(new Animated.Value(0)).current;
+  const startAbsolutePositionAnimation = () => {
+    Animated.timing(absolutePosition, {
+      toValue: 150,
+      duration: 500,
+      useNativeDriver: false,
+    }).start(() => {
+      Animated.timing(absolutePosition, {
+        toValue: 0,
+        duration: 3000,
+        useNativeDriver: false,
+      }).start();
+    });
+  };
   return (
     <View style={styles.container}>
       <Text>Animations</Text>
@@ -143,18 +157,33 @@ export default function App() {
           <Text style={{ color: "black" }}>{"SCALE"}</Text>
         </Animated.View>
       </TouchableWithoutFeedback> */}
-      <TouchableWithoutFeedback onPressIn={startHeightWidthAnimation}>
+      {/* <TouchableWithoutFeedback onPressIn={startHeightWidthAnimation}>
         <Animated.View
           style={{
             backgroundColor: "orange",
             flexDirection: "row",
-            height: heightWidth,
-            width: heightWidth,
             justifyContent: "center",
             alignItems: "center",
+            height: heightWidth,
+            width: heightWidth,
           }}
         >
           <Text style={{ color: "black" }}>{"HEIGHT & WIDTH"}</Text>
+        </Animated.View>
+      </TouchableWithoutFeedback> */}
+      <TouchableWithoutFeedback onPressIn={startAbsolutePositionAnimation}>
+        <Animated.View
+          style={{
+            backgroundColor: "purple",
+            flexDirection: "row",
+            height: 100,
+            width: 100,
+            // position: "absolute",
+            top: absolutePosition,
+            left: absolutePosition,
+          }}
+        >
+          <Text style={{ color: "white" }}>{"ABSOLUTE POSITION"}</Text>
         </Animated.View>
       </TouchableWithoutFeedback>
     </View>
