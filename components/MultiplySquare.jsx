@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Animated, Text, Easing } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-export const DivideSquare = () => {
+export const MultiplySquare = () => {
   const scale = useRef(new Animated.Value(0)).current;
   const startScaleAnimation = () => {
     Animated.timing(scale, {
@@ -18,12 +18,12 @@ export const DivideSquare = () => {
     });
   };
 
-  const newAnimation = Animated.divide(scale, 5);
+  const newAnimation = Animated.multiply(scale, 5);
   return (
     <TouchableWithoutFeedback onPress={startScaleAnimation}>
       <Animated.View
         style={{
-          backgroundColor: "rosybrown",
+          backgroundColor: "papayawhip",
           flexDirection: "row",
           height: 100,
           width: 100,
@@ -37,11 +37,11 @@ export const DivideSquare = () => {
           ],
         }}
       >
-        <Text style={{ color: "black" }}>{"DIVIDE"}</Text>
+        <Text style={{ color: "black" }}>{"MULTIPLY"}</Text>
       </Animated.View>
       <Animated.View
         style={{
-          backgroundColor: "rosybrown",
+          backgroundColor: "papayawhip",
           flexDirection: "row",
           height: 100,
           width: 100,
@@ -56,7 +56,7 @@ export const DivideSquare = () => {
         }}
       >
         <Text style={{ color: "black", padding: 2 }}>
-          {"Animation divided by 5"}
+          {"Animation multipied by 5"}
         </Text>
       </Animated.View>
     </TouchableWithoutFeedback>

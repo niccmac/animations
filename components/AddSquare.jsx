@@ -28,7 +28,7 @@ export const AddSquare = () => {
   //   positionWithOffset,
   //   otherNumber
   // );
-  const newAnimation = Animated.add(scale, 50);
+  const newAnimation = Animated.add(scale, 5);
   return (
     <TouchableWithoutFeedback onPress={startScaleAnimation}>
       <Animated.View
@@ -63,9 +63,7 @@ export const AddSquare = () => {
           ],
         }}
       >
-        <Text style={{ color: "black", padding: 2 }}>
-          {"Wow, this is 50 pts lower"}
-        </Text>
+        <Text style={{ color: "black", padding: 2 }}>{"Animation plus 5"}</Text>
       </Animated.View>
     </TouchableWithoutFeedback>
   );
