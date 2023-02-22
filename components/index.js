@@ -9,3 +9,4 @@ export * from "./SpringSquare";
 export * from "./LoopSquare";
 export * from "./DecaySquare";
 export * from "./AddSquare";
+export * from "./DivideSquare";

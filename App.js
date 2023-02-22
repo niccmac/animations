@@ -15,6 +15,7 @@ import {
   LoopSquare,
   DecaySquare,
   AddSquare,
+  DivideSquare,
 } from "./components";
 
 const Stack = createStackNavigator();
@@ -77,6 +78,9 @@ const LandingScreen = () => {
         </View>
         <View style={styles.spaced}>
           <AddSquare />
+        </View>
+        <View style={styles.spaced}>
+          <DivideSquare />
         </View>
       </View>
     </ScrollView>

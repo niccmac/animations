@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Animated, Text, Easing } from "react-native";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
-export const AddSquare = () => {
+export const DivideSquare = () => {
   const scale = useRef(new Animated.Value(0)).current;
   const startScaleAnimation = () => {
     Animated.timing(scale, {
@@ -28,7 +28,7 @@ export const AddSquare = () => {
   //   positionWithOffset,
   //   otherNumber
   // );
-  const newAnimation = Animated.add(scale, 50);
+  const newAnimation = Animated.divide(scale, 5);
   return (
     <TouchableWithoutFeedback onPress={startScaleAnimation}>
       <Animated.View
@@ -39,6 +39,7 @@ export const AddSquare = () => {
           width: 100,
           justifyContent: "center",
           alignItems: "center",
+          marginBottom: 5,
           transform: [
             {
               translateY: scale, //Use translateX to move left > right
@@ -46,7 +47,7 @@ export const AddSquare = () => {
           ],
         }}
       >
-        <Text style={{ color: "black" }}>{"ADD"}</Text>
+        <Text style={{ color: "black" }}>{"DIVIDE"}</Text>
       </Animated.View>
       <Animated.View
         style={{
@@ -56,6 +57,7 @@ export const AddSquare = () => {
           width: 100,
           justifyContent: "center",
           alignItems: "center",
+
           transform: [
             {
               translateY: newAnimation, //Use translateX to move left > right
@@ -64,7 +66,7 @@ export const AddSquare = () => {
         }}
       >
         <Text style={{ color: "black", padding: 2 }}>
-          {"Wow, this is 50 pts lower"}
+          {"Wow, this is 5% lower"}
         </Text>
       </Animated.View>
     </TouchableWithoutFeedback>
