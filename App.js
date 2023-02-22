@@ -14,6 +14,7 @@ import {
   SpringSquare,
   LoopSquare,
   DecaySquare,
+  AddSquare,
 } from "./components";
 
 const Stack = createStackNavigator();
@@ -35,6 +36,10 @@ const styles = StyleSheet.create({
     backgroundColor: "teal",
     alignItems: "center",
     justifyContent: "center",
+    height: "100%",
+  },
+  spaced: {
+    margin: 50,
   },
 });
 const LandingScreen = () => {
@@ -42,16 +47,37 @@ const LandingScreen = () => {
     <ScrollView>
       <View style={styles.container}>
         <Text>Animations</Text>
-        <StatusBar style="auto" />
-        <FadeSquare />
-        <TranslatePosition />
-        <Scale />
-        <HeightWidth />
-        <AbsolutePosition />
-        <ColourSquare />
-        <RotateSquares />
-        <SpringSquare />
-        <LoopSquare />
+        {/* <StatusBar style="auto" /> */}
+        <View style={styles.spaced}>
+          <FadeSquare />
+        </View>
+        <View style={styles.spaced}>
+          <TranslatePosition />
+        </View>
+        <View style={styles.spaced}>
+          <Scale />
+        </View>
+        <View style={styles.spaced}>
+          <HeightWidth />
+        </View>
+        <View style={styles.spaced}>
+          <AbsolutePosition />
+        </View>
+        <View style={styles.spaced}>
+          <ColourSquare />
+        </View>
+        <View style={styles.spaced}>
+          <RotateSquares />
+        </View>
+        <View style={styles.spaced}>
+          <SpringSquare />
+        </View>
+        <View style={styles.spaced}>
+          <LoopSquare />
+        </View>
+        <View style={styles.spaced}>
+          <AddSquare />
+        </View>
       </View>
     </ScrollView>
   );
