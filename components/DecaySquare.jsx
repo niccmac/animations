@@ -3,12 +3,28 @@ import { Animated, PanResponder, Text, View } from "react-native";
 
 export const DecaySquare = () => {
   const pan = useRef(new Animated.ValueXY()).current;
+  // const value = { x: 0, y: 0 };
 
+  // pan.addListener((v) => {
+  //   (value.x = v.x), (value.y = v.y);
+  // });
   const panResponder = useRef(
     PanResponder.create({
       onMoveShouldSetPanResponder: () => true,
+      onStartShouldSetPanResponder: () => true,
+      onMoveShouldSetResponderCapture: () => true,
+      onMoveShouldSetPanResponderCapture: () => true,
+      // onPanResponderGrant: (e, gestureState) => {
+      //   pan.setOffset({ x: value.x, y: value.y });
+      // },
       onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }]),
-      onPanResponderRelease: () => {
+      onPanResponderRelease: (e, { vx, vy }) => {
+        // Animated.decay(pan, {
+        //   velocity: { x: vx, y: vy },
+        //   deceleration: 0.997,
+        //   useNativeDriver: true,
+        //   isInteraction: true,
+        // }).start();
         pan.extractOffset();
       },
     })
@@ -41,7 +57,7 @@ export const DecaySquare = () => {
             alignItems: "center",
           }}
         >
-          <Text style={{ color: "white" }}>{"Decay"}</Text>
+          <Text style={{ color: "black" }}>{"Move me"}</Text>
         </View>
       </Animated.View>
     </View>
