@@ -7,3 +7,4 @@ export * from "./Colour";
 export * from "./RotateSquares";
 export * from "./SpringSquare";
 export * from "./LoopSquare";
+export * from "./DecaySquare";
