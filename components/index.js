@@ -11,3 +11,4 @@ export * from "./DecaySquare";
 export * from "./AddSquare";
 export * from "./DivideSquare";
 export * from "./MultiplySquare";
+export * from "./ModuloSquare";
