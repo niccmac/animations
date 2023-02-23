@@ -19,6 +19,7 @@ import {
   MultiplySquare,
   ModuloSquare,
 } from "./components";
+import { Circle } from "./components/Circle";
 
 const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -28,6 +29,7 @@ export default function App() {
       <BottomTab.Navigator>
         <BottomTab.Screen name="Animations" component={LandingScreen} />
         <BottomTab.Screen name="Move" component={MoveScreen} />
+        <BottomTab.Screen name="Circle" component={CircleScreen} />
       </BottomTab.Navigator>
     </NavigationContainer>
   );
@@ -96,4 +98,7 @@ const LandingScreen = () => {
 };
 const MoveScreen = () => {
   return <DecaySquare />;
+};
+const CircleScreen = () => {
+  return <Circle />;
 };

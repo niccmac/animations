@@ -33,7 +33,7 @@ export const ModuloSquare = () => {
     <TouchableWithoutFeedback onPress={startScaleAnimation}>
       <Animated.View
         style={{
-          backgroundColor: "papayawhip",
+          backgroundColor: "skyblue",
           flexDirection: "row",
           height: 100,
           width: 100,
@@ -47,11 +47,11 @@ export const ModuloSquare = () => {
           ],
         }}
       >
-        <Text style={{ color: "black" }}>{"MODULO"}</Text>
+        <Text style={{ color: "white" }}>{"MODULO"}</Text>
       </Animated.View>
       <Animated.View
         style={{
-          backgroundColor: "papayawhip",
+          backgroundColor: "skyblue",
           flexDirection: "row",
           height: 100,
           width: 100,
@@ -61,7 +61,7 @@ export const ModuloSquare = () => {
           transform: [{ rotateY: rotateInterpolate }],
         }}
       >
-        <Text style={{ color: "black", padding: 2 }}>
+        <Text style={{ color: "white", padding: 2 }}>
           {"Animation speed changed"}
         </Text>
       </Animated.View>
