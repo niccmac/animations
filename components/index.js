@@ -12,3 +12,4 @@ export * from "./AddSquare";
 export * from "./DivideSquare";
 export * from "./MultiplySquare";
 export * from "./ModuloSquare";
+export * from "./ParallelSquare.jsx";

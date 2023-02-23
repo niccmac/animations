@@ -18,6 +18,7 @@ import {
   DivideSquare,
   MultiplySquare,
   ModuloSquare,
+  ParallelSquare,
 } from "./components";
 import { Circle } from "./components/Circle";
 
@@ -91,6 +92,9 @@ const LandingScreen = () => {
         </View>
         <View style={styles.spaced}>
           <ModuloSquare />
+        </View>
+        <View style={styles.spaced}>
+          <ParallelSquare />
         </View>
       </View>
     </ScrollView>
